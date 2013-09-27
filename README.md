@@ -116,8 +116,11 @@ the number of reads mapping to each feature in the metagenome using HTSeq.
 Usage: ./MapCount_RNASeq.sh (in_file) (out_pfx) (assembly) (threads(x))
 
    in_file   Path of the trimmed input fastq file.
+
    out_pfx   Desired prefix of output files.
+
    assembly  Prefix for assembly.
+
    threads   1 = 1 processing thread; 2 = 2 processing threads, etc.
 
 Requires: a fastq formatted in_file, a metagenome fasta file indexed by Bowtie 2.0, 
