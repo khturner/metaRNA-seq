@@ -1,6 +1,7 @@
 metaRNA-seq
 ===========
-Custom scripts for creating and annotating multispecies bacterial metagenomes
+Custom scripts for creating, annotating, and determining differential gene
+expression in multispecies bacterial metagenomes
 
 Copyright (c) 2013 Peter A. Jorth, Keith H. Turner, Pinar Gumus, Nejat Nizam,
 Nurcan Buduneli, Marvin Whiteley
