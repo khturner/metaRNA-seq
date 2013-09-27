@@ -98,3 +98,80 @@ Dependencies:
 -URI::Escape (CPAN)
 
 -wget (Unix)
+
+ECcounter.pl
+===========
+This is a perl script that takes a tab-delimited table with EC numbers in the first column
+and read counts in the following 6 columns. The table needs to be sorted by EC number. The
+script then scans through each row in the table and sums the total read count for each unique
+EC number for each replicate.
+
+Usage: ./ECcounter.pl (ECcount_file)
+
+MapCount_RNASeq.sh
+===========
+This UNIX shell script uses Bowtie 2.0 to map metaRNA-seq reads to a metagenome, and counts
+the number of reads mapping to each feature in the metagenome using HTSeq.
+
+Usage: ./MapCount_RNASeq.sh (in_file) (out_pfx) (assembly) (threads(x))
+
+   in_file   Path of the trimmed input fastq file.       
+   out_pfx   Desired prefix of output files.
+   assembly  Prefix for assembly.
+   threads   1 = 1 processing thread; 2 = 2 processing threads, etc.
+
+Requires: a fastq formatted in_file, a metagenome fasta file indexed by Bowtie 2.0, 
+          and a metagenome gff annotation file.
+
+The following variable needs to be defined in the user .profile for proper execution:
+
+METARNASEQDIR=/path/to/metagenome
+
+where metagenome is the directory containing the gff file and the Bowtie indices.
+
+Dependencies:
+
+-Bowtie 2.0 (http://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.1.0/)
+
+-htseq-count (https://pypi.python.org/pypi/HTSeq)
+
+calcRNASeqPaired.sh
+===========
+This shell script joins read count files produced by MapCount_RNASeq.sh and then determines
+differentially expressed genes in the metagenome using a paired EdgeR analysis. The end results
+are a table with differentially expressed genes, a mutlidimensional scaling plot showing 
+relatedness of samples, and a plot showing the goodness of fit for the variance estimation.
+
+Usage: ./calcRNASeqPaired.sh [-o <output>] [-c <name>] [-x <#>] [-t <name>] [-y <#>] <file1> <file2> <file3> ... <filen>
+
+Requires: Pairwise_edgeR.R must be present in the directory defined by the user .profile for 
+proper execution:
+
+METARNASEQDIR=/path/to/metagenome
+
+Dependencies:
+
+-EdgeR
+
+-Pairwise_edgeR.R (this package)
+
+PairwiseEdgeR.sh
+===========
+This shell script reads in a tab-delimited table with genes or EC numbers in the first column,
+followed by raw read counts per gene/EC in the following columns. Then the script determines
+differentially expressed genes in the metagenome using a paired EdgeR analysis. The end results
+are a table with differentially expressed genes, a mutlidimensional scaling plot showing 
+relatedness of samples, and a plot showing the goodness of fit for the variance estimation.
+
+Usage: ./PairwiseEdgeR.sh [-o <output>] [-c <name>] [-x <#>] [-t <name>] [-y <#>] <file1> <file2> <file3> ... <filen>
+
+Requires: Pairwise_edgeR.R must be present in the directory defined by the user .profile for 
+proper execution:
+
+METARNASEQDIR=/path/to/metagenome
+
+Dependencies:
+
+-EdgeR
+
+-Pairwise_edgeR.R (this package)
