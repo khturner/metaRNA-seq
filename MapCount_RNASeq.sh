@@ -104,7 +104,7 @@ echo "---------------------------------------------------------" >> $OUT_PFX.log
 echo "Running bowtie2" >> $OUT_PFX.log.txt 2>&1
 echo "`date`" >> $OUT_PFX.log.txt 2>&1
 echo "---------------------------------------------------------" >> $OUT_PFX.log.txt 2>&1
-bowtie2 -x $ASSEMBLY -q -p $THREADS -k 1 -U $IN_FQ -S $OUT_PFX.sam >> $OUT_PFX.log.txt 2>&1
+bowtie2 -x $METARNASEQDIR/$ASSEMBLY -q -p $THREADS -k 1 -U $IN_FQ -S $OUT_PFX.sam >> $OUT_PFX.log.txt 2>&1
 ckRes $? "bowtie2"
 ckFileSz "$OUT_PFX.sam"
     

@@ -99,6 +99,6 @@ echo "" >> $OUT_PFX.log.txt 2>&1
 # Running DESeq through my DESeq R script using established variables and 
 #     the newly joined raw count file
 echo "Running DESeq on $FILE" >> $OUT_PFX.log.txt 2>&1
-Rscript $PATHTO/Pairwise_edgeR.R $FILE $OUT_PFX $CONTROL_PFX $CONTROL_REPS $TEST_PFX $TEST_REPS >> $OUT_PFX.log.txt 2>&1
+Rscript $METARNASEQDIR/Pairwise_edgeR.R $FILE $OUT_PFX $CONTROL_PFX $CONTROL_REPS $TEST_PFX $TEST_REPS >> $OUT_PFX.log.txt 2>&1
 
 exit

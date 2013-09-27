@@ -153,6 +153,6 @@ rm *.jointmp
 # Running EdgeR through my EdgeR R script using established variables and 
 #     the newly joined raw read count file
 echo "Running EdgeR on $OUT_PFX.count.txt" >> $OUT_PFX.log.txt 2>&1
-Rscript $METADIR/Pairwise_edgeR.R $OUT_PFX.count.txt $OUT_PFX $CONTROL_PFX $CONTROL_REPS $TEST_PFX $TEST_REPS >> $OUT_PFX.log.txt 2>&1
+Rscript $METARNASEQDIR/Pairwise_edgeR.R $OUT_PFX.count.txt $OUT_PFX $CONTROL_PFX $CONTROL_REPS $TEST_PFX $TEST_REPS >> $OUT_PFX.log.txt 2>&1
 
 exit
